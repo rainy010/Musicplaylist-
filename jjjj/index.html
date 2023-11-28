@@ -1,0 +1,106 @@
+<!-- coding with nick -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player | </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN -->
+
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="top-bar">
+      <i class="material-icons">favorite_border</i>
+      <span>Now Playing</span>
+      <button id="share-button">
+        <i class="fas fa-share"></i> 
+      </button>     </div>
+    <div class="img-area">
+      <img src="" alt="">
+    </div>
+    <div class="song-details">
+      <p class="name"></p>
+      <p class="artist"></p>
+    </div>
+
+    <div class="progress-area">
+
+      <div class="progress-bar">
+        <audio id="main-audio" src=""></audio>
+      </div>
+      <div class="song-timer">
+        <span class="current-time">0:00</span>
+        <span class="max-duration">0:00</span>
+      </div>
+      <audio id="main-audio" src=""></audio>
+    </div>
+
+    <div class="controls">
+      <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+      <i id="prev" class="material-icons prev">fast_rewind</i>
+      <div class="play-pause">
+        <i class="material-icons play">play_arrow</i>
+      </div>
+      <i id="next" class="material-icons next">fast_forward</i>
+      <i id="more-music" class="material-icons">queue_music</i>
+    </div>
+
+    <div class="music-list">
+      <div class="header">
+        <div class="row">
+          <i class="list material-icons">queue_music</i>
+          <span>Music List</span>
+        </div>
+        <i id="close" class="material-icons">close</i>
+      </div>
+      <ul>
+       
+      </ul>
+    </div>
+     </div>
+  <script>
+    const shareButton = document.getElementById('share-button');
+
+    shareButton.addEventListener('click', async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Title of the shared content',
+            text: 'Description or message to share',
+            url: 'https://your-website-url.com' // Replace with your website URL
+          });
+          console.log('Shared successfully');
+        } catch (error) {
+          console.error('Error sharing:', error);
+        }
+      } else {
+        console.log('Web Share API not supported');
+        // Fallback for browsers that do not support Web Share API
+        // Here you can provide a custom sharing dialog or use another sharing method
+        // For example:
+        const shareFallback = prompt('Share this page by copying the link:', 'https://your-website-url.com');
+        if (shareFallback) {
+          // Perform action with the shared URL, like copying it to the clipboard
+          console.log('Shared via fallback:', shareFallback);
+          // You can use additional code to handle copying the URL to the clipboard or other actions
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+  </div>
+
+  <script src="js/music-list.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
